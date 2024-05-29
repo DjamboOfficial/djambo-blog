@@ -1,3 +1,3 @@
 export const cx = (...classNames) => {
-  classNames.filter(Boolean).at(join(" "));
+  classNames.filter(Boolean).join(" ");
 };

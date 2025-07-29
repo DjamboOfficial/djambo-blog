@@ -1,3 +1,5 @@
+import PostCard from "@/components/PostCard";
+
 export default function HomePage() {
   return (
     <section className="max-w-3xl mx-auto px-4 py-12">
@@ -6,21 +8,13 @@ export default function HomePage() {
         Contenuto da decidersi
       </p>
 
-      <div className="space-y-8">
-        <article className="border-b pb-4">
-          <h2 className="text-2xl font-semibold">Titolo del Post</h2>
-          <p className="text-gray-600 dark:text-gray-400">
-            Vabbè, questo lo inserisco poi...
-          </p>
-
-          <a
-            href="#"
-            className="text-blue-600 dark:text-blue-400 font-medium hover:underline"
-          >
-            Leggi tutto
-          </a>
-        </article>
-      </div>
+      <PostCard
+        title="Hadrian's Wall Jam"
+        summary="Una jam ambient ispirata al confine dell'Impero Romano."
+        date="29 Luglio 2025"
+        slug="hadrians-wall-jam"
+        videoId="xWGa9Gq4aFI" // ← sostituisci con il tuo vero ID video
+      />
     </section>
   );
 }

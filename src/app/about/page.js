@@ -17,7 +17,7 @@ export default function AboutPage() {
       <p className="Se vuoi scrivermi, dai un'occhiata alla sezione">
         Se vuoi scrivermi, dai un’occhiata alla sezione{" "}
         <a
-          href="/contact"
+          href="/contatti"
           className="text-blue-600 dark:text-blue-400 hover:underline"
         >
           Contatti.

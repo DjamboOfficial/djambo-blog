@@ -8,7 +8,16 @@ const mdxPlugin = withMDX({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["img.youtube.com", "res.cloudinary.com"], // <- array unico con tutti i domini consentiti
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "img.youtube.com",
+      },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+      },
+    ],
   },
   pageExtensions: ["js", "jsx", "ts", "tsx", "mdx"],
 };

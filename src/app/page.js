@@ -28,6 +28,7 @@ export default function BlogIndexPage() {
             summary={post.summary}
             date={post.date}
             slug={post.slug}
+            cover={post.cover}
             videoId={post.videoId}
           />
         ))}

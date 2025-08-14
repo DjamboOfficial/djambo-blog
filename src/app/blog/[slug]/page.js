@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import Post from "@/components/Post"; // importa il template
+import Post from "@/components/Post";
 
 export async function generateStaticParams() {
   const postsDir = path.join(process.cwd(), "src", "content", "posts");
@@ -15,7 +15,7 @@ export async function generateStaticParams() {
     }));
 }
 
-export default async function PostPage({ params }) {
+export default function PostPage({ params }) {
   const { slug } = params;
   const filePath = path.join(
     process.cwd(),
@@ -24,12 +24,11 @@ export default async function PostPage({ params }) {
     "posts",
     `${slug}.mdx`
   );
-
   const source = fs.readFileSync(filePath, "utf8");
-  const { content, data } = matter(source);
+  const { content, data: frontmatter } = matter(source);
 
   return (
-    <Post title={data.title} date={data.date}>
+    <Post {...frontmatter}>
       <MDXRemote source={content} />
     </Post>
   );

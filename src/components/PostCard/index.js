@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -11,10 +13,15 @@ export default function PostCard({
   tags = [],
 }) {
   const MAX_CHARS = 100;
+  console.log("Qui PostCard: ", cover);
+
   const excerpt =
     summary && summary.length > MAX_CHARS
       ? summary.slice(0, MAX_CHARS - 1) + "…"
       : summary;
+
+  // Funzione helper per capire se cover è URL remoto
+  const isRemote = (url) => /^https?:\/\//.test(url);
 
   return (
     <article className="bg-white dark:bg-gray-900 rounded-2xl shadow-sm hover:shadow-lg transition border border-gray-200 dark:border-gray-800 overflow-hidden mb-10">
@@ -40,14 +47,19 @@ export default function PostCard({
           className="block aspect-[3/2] overflow-hidden"
         >
           <Image
-            src={cover}
+            src={isRemote(cover) ? cover : `/${cover.replace(/^\/?/, "")}`}
             alt={`Copertina del post: ${title}`}
             width={600}
             height={400}
             className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
           />
         </Link>
-      ) : null}
+      ) : (
+        // Fallback se non ci sono video o cover
+        <div className="bg-gray-200 dark:bg-gray-800 aspect-[3/2] flex items-center justify-center text-gray-500 dark:text-gray-400">
+          Nessuna immagine
+        </div>
+      )}
 
       {/* Testo */}
       <div className="p-6">

@@ -1,5 +1,5 @@
 import mdxPkg from "@next/mdx";
-const withMDX = mdxPkg.default || mdxPkg; // fallback per default export o modulo intero
+const withMDX = mdxPkg.default || mdxPkg;
 
 const mdxPlugin = withMDX({
   extension: /\.mdx?$/,
@@ -7,6 +7,9 @@ const mdxPlugin = withMDX({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    domains: ["img.youtube.com", "res.cloudinary.com"], // <- array unico con tutti i domini consentiti
+  },
   pageExtensions: ["js", "jsx", "ts", "tsx", "mdx"],
 };
 

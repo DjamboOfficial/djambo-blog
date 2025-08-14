@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import Post from "@/components/Post"; // importa il template
 
 export async function generateStaticParams() {
   const postsDir = path.join(process.cwd(), "src", "content", "posts");
@@ -28,11 +29,8 @@ export default async function PostPage({ params }) {
   const { content, data } = matter(source);
 
   return (
-    <article className="prose dark:prose-invert mx-auto px-4">
-      <h1 className="text-3xl font-bold mb-4">{data.title}</h1>
-      <p className="text-sm text-gray-500 mb-6">{data.date}</p>
-
+    <Post title={data.title} date={data.date}>
       <MDXRemote source={content} />
-    </article>
+    </Post>
   );
 }

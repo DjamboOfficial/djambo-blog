@@ -1,9 +1,9 @@
 import "./globals.css";
+import SeoProvider from "./seo-provider";
 import { Merriweather } from "next/font/google";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import SeoProvider from "./seo-provider";
 import ScrollToTop from "@/components/ScrollToTop";
 
 const merriweather = Merriweather({
@@ -13,8 +13,7 @@ const merriweather = Merriweather({
 });
 
 export const metadata = {
-  title: "Blog di Edo",
-  description: "Un blog multilingua fatto con Next e Tailwind",
+  metadataBase: new URL(process.env.SITE_URL || "http://localhost:3000"), // nota: SITE_URL maiuscolo
 };
 
 export default function RootLayout({ children }) {
@@ -37,7 +36,10 @@ export default function RootLayout({ children }) {
       <body className="bg-white text-black dark:bg-black dark:text-white transition-colors min-h-screen flex flex-col">
         <SeoProvider />
         <Header />
+
+        {/* Qui monti le pagine */}
         <main className="flex-grow">{children}</main>
+
         <ScrollToTop />
         <Footer />
       </body>

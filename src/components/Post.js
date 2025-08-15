@@ -3,7 +3,6 @@ import Image from "next/image";
 
 export default function Post({ children, title, date, cover }) {
   const isRemote = (url) => /^https?:\/\//.test(url);
-  console.log("Qui Post: ", cover);
 
   return (
     <article className="mx-auto max-w-3xl px-4 sm:px-6 py-10 prose prose-lg prose-neutral">
@@ -39,7 +38,6 @@ export default function Post({ children, title, date, cover }) {
         className="
           post-content
           space-y-6
-
           [&>h2]:mt-10
           [&>h2]:pt-2
           [&>h2]:border-t
@@ -47,13 +45,11 @@ export default function Post({ children, title, date, cover }) {
           [&>h2]:scroll-mt-20
           [&>h2]:text-gray-900
           [&>h2]:font-bold
-
           [&>blockquote]:border-l-4
           [&>blockquote]:border-gray-600
           [&>blockquote]:pl-6
           [&>blockquote]:italic
           [&>blockquote]:text-gray-800
-
           [&>aside]:float-right
           [&>aside]:ml-6
           [&>aside]:w-2/5
@@ -65,7 +61,6 @@ export default function Post({ children, title, date, cover }) {
           [&>aside]:text-gray-900
           [&>aside]:text-right
           [&>aside]:shadow-md
-
           [&>hr]:my-10
         "
       >

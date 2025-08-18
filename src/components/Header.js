@@ -24,7 +24,13 @@ export default function Header() {
         <ul className="flex space-x-6 text-sm">
           <li>
             <Link href="/" className="hover:underline">
-              Home
+              <Image
+                src="/logo.png"
+                alt="Home"
+                width={32}
+                height={32}
+                priority
+              />
             </Link>
           </li>
           <li>

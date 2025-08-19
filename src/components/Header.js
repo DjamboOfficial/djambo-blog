@@ -12,7 +12,7 @@ export default function Header() {
   }, [darkMode]);
 
   return (
-    <header className="bg-gray-900 text-white py-4 px-6 shadow-md">
+    <header className="bg-white text-black dark:bg-gray-900 dark:text-white py-4 px-6 shadow-md transition-colors">
       <nav className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Logo + titolo */}
         <Link href="/" className="flex items-center gap-2">
@@ -24,13 +24,7 @@ export default function Header() {
         <ul className="flex space-x-6 text-sm">
           <li>
             <Link href="/" className="hover:underline">
-              <Image
-                src="/logo.png"
-                alt="Home"
-                width={32}
-                height={32}
-                priority
-              />
+              Home
             </Link>
           </li>
           <li>
@@ -49,7 +43,7 @@ export default function Header() {
         <button
           onClick={() => setDarkMode(!darkMode)}
           aria-label="Toggle dark mode"
-          className="ml-4 border px-2 py-1 rounded"
+          className="ml-4 border border-gray-400 dark:border-gray-600 px-2 py-1 rounded transition-colors"
         >
           {darkMode ? "🌙" : "☀️"}
         </button>

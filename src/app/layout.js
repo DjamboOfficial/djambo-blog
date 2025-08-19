@@ -1,11 +1,11 @@
 import "./globals.css";
-import { Inter } from "next/font/google";
-import SeoProvider from "./seo-provider";
 import { Merriweather } from "next/font/google";
-import dynamic from "next/dynamic";
+import SeoProvider from "./seo-provider";
 import Header from "@/components/Header";
 import ScrollToTop from "@/components/ScrollToTop";
 import Script from "next/script";
+import Footer from "@/components/Footer";
+import { ThemeProvider } from "next-themes";
 
 const merriweather = Merriweather({
   subsets: ["latin"],
@@ -14,10 +14,8 @@ const merriweather = Merriweather({
   weight: ["400", "700"],
 });
 
-const Footer = dynamic(() => import("@components/Footer"), { ssr: false });
-
 export const metadata = {
-  metadataBase: new URL(process.env.SITE_URL || "http://localhost:3000"), // nota: SITE_URL maiuscolo
+  metadataBase: new URL(process.env.SITE_URL || "http://localhost:3000"),
 };
 
 export default function RootLayout({ children }) {
@@ -53,14 +51,17 @@ export default function RootLayout({ children }) {
         </Script>
       </head>
       <body className="bg-white text-black dark:bg-black dark:text-white transition-colors min-h-screen flex flex-col">
-        <SeoProvider />
-        <Header />
-
-        {/* Qui monti le pagine */}
-        <main className="flex-grow">{children}</main>
-
-        <ScrollToTop />
-        <Footer />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem={false}
+        >
+          <SeoProvider />
+          <Header />
+          <main className="flex-grow">{children}</main>
+          <ScrollToTop />
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

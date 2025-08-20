@@ -7,11 +7,18 @@ export const metadata = {
   description: "Tutti gli articoli pubblicati, in ordine dal più recente.",
 };
 
-export default function BlogIndexPage() {
-  // Ordina per data decrescente
-  const posts = getAllPosts().sort(
-    (a, b) => new Date(b.date || 0) - new Date(a.date || 0)
-  );
+// 👇 Qui Next.js App Router ti passa "params.locale"
+export default function BlogIndexPage({ params }) {
+  const { locale } = params;
+
+  // Recupero tutti i post
+  let posts = getAllPosts();
+
+  // Filtro i post per lingua (assumendo che tu abbia "lang" nel frontmatter MDX)
+  posts = posts.filter((p) => p.lang === locale);
+
+  // Ordino per data decrescente
+  posts = posts.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
 
   return (
     <FadeIn>

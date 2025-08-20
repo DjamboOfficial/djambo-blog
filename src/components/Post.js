@@ -1,5 +1,6 @@
 // components/Post.js
 import Image from "next/image";
+import SocialShare from "./SocialShare";
 
 export default function Post({ children, title, date, cover }) {
   const isRemote = (url) => /^https?:\/\//.test(url);
@@ -66,6 +67,7 @@ export default function Post({ children, title, date, cover }) {
       >
         {children}
       </div>
+      <SocialShare title={title} />
     </article>
   );
 }

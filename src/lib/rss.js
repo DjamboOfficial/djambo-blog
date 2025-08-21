@@ -1,4 +1,3 @@
-// lib/rss.js
 import fs from "fs";
 import path from "path";
 import RSS from "rss";
@@ -7,8 +6,8 @@ import matter from "gray-matter";
 // Percorso ai post MDX
 const postsDir = path.join(process.cwd(), "content", "posts");
 
-export default function generateRSS() {
-  const siteUrl = "http://localhost:3000"; // Cambia con il tuo dominio
+export default async function generateRSS() {
+  const siteUrl = process.env.SITE_URL || "http://localhost:3000";
 
   // Crea il feed
   const feed = new RSS({
@@ -27,7 +26,7 @@ export default function generateRSS() {
     if (file.endsWith(".mdx")) {
       const filePath = path.join(postsDir, file);
       const source = fs.readFileSync(filePath, "utf8");
-      const { data } = matter(source); // Legge frontmatter
+      const { data } = matter(source);
 
       feed.item({
         title: data.title,

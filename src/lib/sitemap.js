@@ -1,14 +1,11 @@
-// lib/sitemap.js
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-export default function generateSitemap() {
+export default async function generateSitemap() {
   const siteUrl = process.env.SITE_URL || "http://localhost:3000";
 
   const staticPages = ["", "about", "contacts"];
-
-  // Percorso ai post MDX
   const postsDir = path.join(process.cwd(), "content", "posts");
   const postFiles = fs.readdirSync(postsDir);
 

@@ -1,3 +1,5 @@
+"use client"; // forza client component
+
 export const metadata = {
   title: "Chi sono",
   description: "Descrizione",
@@ -14,7 +16,7 @@ export default function AboutPage() {
       <p className="text-lg text-gray-700 dark:text-gray-300 mb-4">
         Qui condivido robe.
       </p>
-      <p className="Se vuoi scrivermi, dai un'occhiata alla sezione">
+      <p>
         Se vuoi scrivermi, dai un’occhiata alla sezione{" "}
         <a
           href="/contatti"

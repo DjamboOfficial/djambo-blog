@@ -1,8 +1,5 @@
-// app/contact/page.js
+// app/contacts/page.js
 "use client";
-import { MdEmail } from "react-icons/md";
-import { FaLinkedin, FaGithub } from "react-icons/fa";
-
 export const metadata = {
   title: "Contatti",
   description: "Come metterti in contatto con me.",
@@ -18,16 +15,16 @@ export default function ContactPage() {
 
       <ul className="space-y-4 text-lg text-gray-700 dark:text-gray-300">
         <li>
-          <MdEmail className="text-xl text-blue-600 dark:text-blue-400" />
+          Email:{" "}
           <a
-            href="edoardo.giambuzzi@gmail.com"
+            href="mailto:edoardo.giambuzzi@gmail.com"
             className="text-blue-600 dark:text-blue-400 hover:underline"
           >
             edoardo.giambuzzi@gmail.com
           </a>
         </li>
         <li>
-          💼 LinkedIn:{" "}
+          LinkedIn:{" "}
           <a
             href="https://www.linkedin.com/in/edoardo-giambuzzi-45876599/"
             target="_blank"
@@ -38,7 +35,7 @@ export default function ContactPage() {
           </a>
         </li>
         <li>
-          <FaGithub className="text-xl text-blue-600 dark:text-blue-400" />
+          GitHub:{" "}
           <a
             href="https://github.com/DjamboOfficial"
             target="_blank"
